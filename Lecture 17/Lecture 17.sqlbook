@@ -98,7 +98,11 @@ Try it yourself!
 -- Add your name/nationality and your neighbors'
 -- Select a new driver id (needs to be unique)
 -- Make sure to deparate arguments by a semicolon!
+INSERT INTO drivers  VALUES (5, 'Oliver Zhao','Chinese',999);
 
+INSERT INTO drivers  VALUES (6, 'Shawn Xu','Shanghainese',0);
+
+INSERT INTO drivers  VALUES (1, 'Garry Zhu','Chinese',-1);
 
 
 
@@ -188,7 +192,8 @@ with more than 60 victories
 -- SQLBook: Code
 -- Write your own code!
 
-
+SELECT nationality, driver_id FROM drivers
+WHERE victories > 60;
 
 
 
