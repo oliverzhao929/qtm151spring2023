@@ -35,7 +35,7 @@ United States Congress dataset
 
 Create table from codebook/dictionary
 -- SQLBook: Code
--- Active: 1679515732880@@127.0.0.1@5432@postgres
+-- Active: 1679516077820@@127.0.0.1@5432@postgres
 -- We start by deleting the old table
 -- SQL does not allow you to create a table if one already exists
 DROP TABLE IF EXISTS us_congress_members;
@@ -85,8 +85,14 @@ Try it yourself!
 - Create a new table for "bills_subjects"
 -- SQLBook: Code
 -- Write your own code
+DROP TABLE IF EXISTS bills_subjects;
 
-
+CREATE TABLE bills_subjects(
+    "Congress" int,
+    bill_number int,
+    bill_type varchar(30),
+    bill_subject varchar(30)
+)
 -- SQLBook: Markup
 # <span style="color:darkblue"> II. Import CSV into SQL </span>
 
@@ -116,6 +122,11 @@ FROM 'D:\GitHub\qtm151spring2023\Lecture 18\data\us_congress_members.csv' ```
 WITH (DELIMITER ',', FORMAT csv, HEADER MATCH);
 ```
 -- SQLBook: Code
+COPY us_congress_members
+FROM '/private/tmp/data/us_congress_members.csv'
+WITH (DELIMITER',', FORMAT csv, HEADER MATCH)
+-- SQLBook: Code
+-- Active: 1679516077820@@127.0.0.1@5432@postgres
 -- The argument associaated with COPY is the dataset in our server
 -- The argument associaated with FROM is a filepath name
 -- There are three options specified in WITH:
@@ -153,12 +164,10 @@ SELECT * FROM us_congress_members
 -- Note in the instructor's computer this is:
 -- You just have to change the FROM argument
 --
-COPY us_congress_members
-FROM 'D:\GitHub\qtm151spring2023\Lecture 18\data\us_congress_members.csv'
-WITH (DELIMITER ',', FORMAT csv, HEADER MATCH);
 
 
 
+SELECT * FROM us_congress_members;
 -- SQLBook: Markup
 <font size = "5">
 
